@@ -43,6 +43,12 @@ Note that, if useful, you can connect to Postgres using:
 npm run db:psql
 ```
 
+View the status of Liquibase changes:
+
+```shell
+npm run db:liquibase
+```
+
 Setup your [database schema](https://electric-sql.com/docs/usage/data-modelling):
 
 ```shell
