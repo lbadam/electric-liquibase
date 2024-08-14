@@ -12,6 +12,7 @@
     "client:watch": "electric-sql generate --watch",
     "db:migrate": "electric-sql with-config \"pg-migrations apply --database {{ELECTRIC_PROXY}} --directory ./db/migrations\"",
     "db:psql": "electric-sql psql",
+    "db:liquibase": "node ./liquibase.js",
     "electric:start": "electric-sql start",
     "dev": "vite",
     "build": "vite build",
