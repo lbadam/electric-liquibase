@@ -1,19 +1,13 @@
-import logo from './assets/logo.svg'
-import './App.css'
-import './style.css'
+import { useShape } from '@electric-sql/react'
 
-import { ElectricProvider } from './ElectricProvider'
-import { Example } from './Example'
+function Component() {
+  const { data } = useShape({
+    url: `http://localhost:3000/v1/shape/foo`,
+  })
 
-export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <ElectricProvider>
-          <Example />
-        </ElectricProvider>
-      </header>
-    </div>
+    <pre>{ JSON.stringify(data, null, 4) }</pre>
   )
 }
+
+export default Component

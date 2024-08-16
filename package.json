@@ -1,42 +1,32 @@
 {
-  "name": "electricsql-app",
-  "version": "0.1.0",
-  "author": "ElectricSQL",
+  "name": "react-app",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "backend:start": "electric-sql start --with-postgres",
-    "backend:stop": "electric-sql stop",
-    "backend:up": "electric-sql start --with-postgres --detach",
-    "backend:down": "electric-sql stop --remove",
-    "client:generate": "electric-sql generate",
-    "client:watch": "electric-sql generate --watch",
-    "db:migrate": "electric-sql with-config \"pg-migrations apply --database {{ELECTRIC_PROXY}} --directory ./db/migrations\"",
-    "db:psql": "electric-sql psql",
-    "db:liquibase": "node ./liquibase.js",
-    "electric:start": "electric-sql start",
     "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "db:liquibase": "node ./liquibase.js"
   },
   "dependencies": {
-    "electric-sql": "^0.12.0",
+    "@electric-sql/react": "^0.2.1",
     "liquibase": "^4.28.1",
-    "react": "^18.3.0",
-    "react-dom": "^18.3.0",
-    "wa-sqlite": "github:rhashimoto/wa-sqlite#semver:^0.9.11"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@databases/pg-migrations": "^5.0.3",
-    "@types/react": "^18.3.0",
+    "@eslint/js": "^9.9.0",
+    "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.11.0",
-    "@typescript-eslint/parser": "^7.11.0",
-    "@vitejs/plugin-react": "^4.3.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.6",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.12"
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^9.9.0",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.9",
+    "globals": "^15.9.0",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.0.1",
+    "vite": "^5.4.1"
   }
 }

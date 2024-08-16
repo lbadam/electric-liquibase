@@ -1,83 +1,50 @@
-<a href="https://electric-sql.com">
-  <picture>
-    <source media="(prefers-color-scheme: dark)"
-        srcset="https://raw.githubusercontent.com/electric-sql/meta/main/identity/ElectricSQL-logo-light-trans.svg"
-    />
-    <source media="(prefers-color-scheme: light)"
-        srcset="https://raw.githubusercontent.com/electric-sql/meta/main/identity/ElectricSQL-logo-black.svg"
-    />
-    <img alt="ElectricSQL logo"
-        src="https://raw.githubusercontent.com/electric-sql/meta/main/identity/ElectricSQL-logo-black.svg"
-    />
-  </picture>
-</a>
+# React + TypeScript + Vite
 
-# Welcome to your ElectricSQL app!
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-This is an example web application using ElectricSQL in the browser with [wa-sqlite](https://github.com/rhashimoto/wa-sqlite).
+Currently, two official plugins are available:
 
-## Pre-reqs
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-You need [NodeJS >= 16.11 and Docker Compose v2](https://electric-sql.com/docs/usage/installation/prereqs).
+## Expanding the ESLint configuration
 
-## Install
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-Install the dependencies:
+- Configure the top-level `parserOptions` property like this:
 
-```sh
-npm install
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-## Setup
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-Start Postgres and Electric using Docker (see [running the examples](https://electric-sql.com/docs/examples/notes/running) for more options):
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
 
-```shell
-npm run backend:up
-# Or `npm run backend:start` to foreground
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
 ```
-
-Note that, if useful, you can connect to Postgres using:
-
-```shell
-npm run db:psql
-```
-
-View the status of Liquibase changes:
-
-```shell
-npm run db:liquibase
-```
-
-Setup your [database schema](https://electric-sql.com/docs/usage/data-modelling):
-
-```shell
-npm run db:migrate
-```
-
-Generate your [type-safe client](https://electric-sql.com/docs/usage/data-access/client):
-
-```shell
-npm run client:generate
-# or `yarn client:watch`` to re-generate whenever the DB schema changes
-```
-
-## Run
-
-Start your app:
-
-```sh
-npm run dev
-```
-
-Open [localhost:5173](http://localhost:5173) in your web browser.
-
-## Develop
-
-`./src/Example.tsx` has the main example code. For more information see the:
-
-- [Documentation](https://electric-sql.com/docs)
-- [Quickstart](https://electric-sql.com/docs/quickstart)
-- [Usage guide](https://electric-sql.com/docs/usage)
-
-If you need help [let us know on Discord](https://discord.electric-sql.com).
