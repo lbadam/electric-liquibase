@@ -1,4 +1,12 @@
-# React + TypeScript + Vite
+# Example of running Liquibase alongside ElectricSQL and React
+
+This example has been modified from this [quickstart guide](https://next.electric-sql.com/guides/quickstart).
+
+1. From the root folder, begin by running `docker compose up` to start the backend.
+2. Run `npm i` to install dependencies.
+3. Run `npm run db:liquibase` to run 2 included changesets via `lb-changelog.sql`
+
+## React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
